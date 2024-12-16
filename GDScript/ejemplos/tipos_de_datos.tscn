@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw68vg4lx3chg"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/tipos_de_datos_ejemplos.gd" id="1_qg0g8"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_5dnjo"]
+
+[node name="Tipos_de_datos" type="Node"]
+script = ExtResource("1_qg0g8")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_5dnjo")

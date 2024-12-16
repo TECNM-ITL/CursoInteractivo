@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vd1qdjvjpprw"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/operadores_ejemplos.gd" id="1_trfmm"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_e6f54"]
+
+[node name="Operadores" type="Node"]
+script = ExtResource("1_trfmm")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_e6f54")

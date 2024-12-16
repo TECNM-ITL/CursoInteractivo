@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3uis55s00vya"]
+
+[ext_resource type="FontFile" uid="uid://dfvoqria0m0jj" path="res://addons/godot-course/ui/fonts/square block.ttf" id="1_tw52y"]
+[ext_resource type="Texture2D" uid="uid://b3ckmr5dvx2qw" path="res://addons/godot-course/ui/icons/icon_edu.svg" id="2_etnec"]
+[ext_resource type="Script" path="res://addons/godot-course/ui/menus/bt_course.gd" id="2_vt317"]
+[ext_resource type="AudioStream" uid="uid://bip7no0q26c03" path="res://addons/godot-course/ui/sounds/click.wav" id="4_22byt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqaxi"]
+content_margin_left = 5.0
+content_margin_right = 32.0
+bg_color = Color(0.490196, 1, 0, 1)
+border_width_bottom = 5
+border_color = Color(0.117647, 0.792157, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbmsx"]
+bg_color = Color(0.490196, 1, 0, 1)
+border_width_top = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ox1"]
+draw_center = false
+
+[node name="Bt_course" type="Button"]
+offset_right = 65.0
+offset_bottom = 32.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.0745098, 0.372549, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.0745098, 0.372549, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_tw52y")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_fqaxi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fqaxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dbmsx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_y3ox1")
+icon = ExtResource("2_etnec")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_vt317")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_22byt")
+bus = &"UI"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

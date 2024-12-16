@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Dialogues" load_steps=20 format=3 uid="uid://bl7iekatiot5l"]
+
+[ext_resource type="Script" path="res://addons/godot-course/lessons/dialogues.gd" id="1_psjfa"]
+[ext_resource type="AudioStream" uid="uid://b4q0wupmbo30g" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo1.mp3" id="1_xtc1g"]
+[ext_resource type="AudioStream" uid="uid://dfwc0u4wu8ccx" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo2.mp3" id="2_rirlw"]
+[ext_resource type="AudioStream" uid="uid://7wodb78yr8ee" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo3.mp3" id="3_vgc0t"]
+[ext_resource type="AudioStream" uid="uid://dagc27ngwxbi2" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo4.mp3" id="4_w72yb"]
+[ext_resource type="AudioStream" uid="uid://b5ikdysk8sobm" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo5.mp3" id="5_bccol"]
+[ext_resource type="AudioStream" uid="uid://com3kju8b566b" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo6.mp3" id="6_l4ydi"]
+[ext_resource type="AudioStream" uid="uid://b1ldj0duivdu0" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo7.mp3" id="7_xxdcm"]
+[ext_resource type="AudioStream" uid="uid://xy76o6532l1c" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo8.mp3" id="8_ylkgt"]
+[ext_resource type="AudioStream" uid="uid://4r5lvu5urstr" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo9.mp3" id="9_mn6gc"]
+[ext_resource type="AudioStream" uid="uid://dcy5ep4gbx3bp" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo10.mp3" id="10_ca4if"]
+[ext_resource type="AudioStream" uid="uid://bauhktobwusrr" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo11.mp3" id="11_ns1uf"]
+[ext_resource type="AudioStream" uid="uid://c0s1effxb1ced" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo12.mp3" id="12_7mgyg"]
+[ext_resource type="AudioStream" uid="uid://cns73b4br6kby" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo13.mp3" id="13_om57s"]
+[ext_resource type="AudioStream" uid="uid://yavswkdbvv8f" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo14.mp3" id="14_s33wp"]
+[ext_resource type="AudioStream" uid="uid://smjxd63d8be4" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo15.mp3" id="15_1gwwt"]
+[ext_resource type="AudioStream" uid="uid://dnh4rmhhkg4w0" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo16.mp3" id="16_hwf5w"]
+[ext_resource type="AudioStream" uid="uid://bwhb01wrwrmb2" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo17.mp3" id="17_nwu23"]
+[ext_resource type="AudioStream" uid="uid://d1idfuqlibss8" path="res://addons/godot-course/lessons/editor_tour/dialogues/dialogo18.mp3" id="18_wdl4r"]
+
+[resource]
+script = ExtResource("1_psjfa")
+dialogue_audios = Array[AudioStreamMP3]([ExtResource("1_xtc1g"), ExtResource("2_rirlw"), ExtResource("3_vgc0t"), ExtResource("4_w72yb"), ExtResource("5_bccol"), ExtResource("6_l4ydi"), ExtResource("7_xxdcm"), ExtResource("8_ylkgt"), ExtResource("9_mn6gc"), ExtResource("10_ca4if"), ExtResource("11_ns1uf"), ExtResource("12_7mgyg"), ExtResource("13_om57s"), ExtResource("14_s33wp"), ExtResource("15_1gwwt"), ExtResource("16_hwf5w"), ExtResource("17_nwu23"), ExtResource("18_wdl4r")])

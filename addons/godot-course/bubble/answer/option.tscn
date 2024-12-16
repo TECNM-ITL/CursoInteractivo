@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy7vnfkdxluid"]
+
+[ext_resource type="Script" path="res://addons/godot-course/bubble/answer/option.gd" id="1_3krw3"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ac1op"]
+
+[node name="option" type="Button"]
+offset_right = 35.0
+offset_bottom = 31.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"AnswerButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ac1op")
+text = "A) "
+alignment = 0
+script = ExtResource("1_3krw3")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn600fsvfypew"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/hola_mundo.gd" id="1_o03kq"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_a4cxp"]
+
+[node name="HolaMundo" type="Node"]
+script = ExtResource("1_o03kq")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_a4cxp")

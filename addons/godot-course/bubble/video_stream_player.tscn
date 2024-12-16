@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://k06o7kl8hyk5"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+custom_minimum_size = Vector2(512, 256)
+offset_right = 512.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand = true
+loop = true

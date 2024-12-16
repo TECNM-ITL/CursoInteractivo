@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpdggy33qkarh"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/listas_ejemplos.gd" id="1_2amyy"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_xfm7v"]
+
+[node name="Listas" type="Node"]
+script = ExtResource("1_2amyy")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_xfm7v")

@@ -1,0 +1,5 @@
+func palabras(texto):
+	return len(texto.split(" "))
+
+func _ready():
+	print(palabras("Salió el sábalo sabio. Salió el sábado."))

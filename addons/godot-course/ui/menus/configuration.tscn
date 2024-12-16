@@ -1,0 +1,397 @@
+[gd_scene load_steps=17 format=3 uid="uid://31lp3wn6epwj"]
+
+[ext_resource type="Script" path="res://addons/godot-course/ui/menus/configuration.gd" id="1_p4c1k"]
+[ext_resource type="Theme" uid="uid://dlwl2v5s14s14" path="res://addons/godot-course/ui/main_theme.tres" id="1_r8qne"]
+[ext_resource type="Texture2D" uid="uid://x3mhqjkjpda" path="res://addons/godot-course/ui/icons/icon_close.png" id="2_2gp8y"]
+[ext_resource type="AudioStream" uid="uid://baoc3hinmgj2n" path="res://addons/godot-course/ui/sounds/start.mp3" id="3_24cmq"]
+[ext_resource type="FontFile" uid="uid://dg3dawn3jkrrn" path="res://addons/godot-course/ui/fonts/Accuratist.otf" id="3_j45gd"]
+[ext_resource type="FontFile" uid="uid://cxeo2n3ky21xb" path="res://addons/godot-course/bubble/assets/fonts/mukta_bold.ttf" id="3_uhqo6"]
+[ext_resource type="AudioStream" uid="uid://bn0so6fbchkfb" path="res://addons/godot-course/ui/sounds/close.wav" id="4_l1yar"]
+[ext_resource type="AudioStream" uid="uid://babweqgm3uo31" path="res://addons/godot-course/ui/sounds/ding.wav" id="8_jbjgk"]
+
+[sub_resource type="Shader" id="Shader_ydr1v"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+uniform float scale;
+
+mat2 r(float a) {
+    float s = sin(a);
+    float c = cos(a);
+    return mat2(vec2(c,-s),vec2(s,c));
+}
+
+void fragment(){
+	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+    vec2 uv = ((FRAGCOORD.xy-.5*iResolution.xy)/iResolution.y*5.+10.)*r(TIME*.03);
+	uv *= vec2(scale);
+    float id = mod(floor(uv.x)+floor(uv.y),2.);
+    float f = smoothstep(-.6,.6,cos(fract(TIME*(id*2.-1.)+id*.5)*3.1415));
+    vec2 guv = (fract(uv)-.5)*(cos(fract(TIME+id*.5)*6.282)*.5+1.5)*r(f*1.5707);
+    COLOR = color*(length(max(abs(guv)-.25,0.)) < .1 ? 1. : .6);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dltsd"]
+shader = SubResource("Shader_ydr1v")
+shader_parameter/color = Color(0, 0.443137, 1, 0.0588235)
+shader_parameter/scale = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tohvc"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.701961, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdtrx"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.254902, 0.254902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5y7qq"]
+bg_color = Color(1, 0.254902, 0.254902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="SystemFont" id="SystemFont_h4u1r"]
+
+[sub_resource type="Theme" id="Theme_qahas"]
+LineEdit/font_sizes/font_size = 20
+
+[sub_resource type="SystemFont" id="SystemFont_u3tr6"]
+
+[node name="Configuration" type="CanvasLayer"]
+script = ExtResource("1_p4c1k")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_dltsd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 8
+theme = ExtResource("1_r8qne")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.5
+offset_top = -197.0
+offset_right = 317.5
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lb_title" type="Label" parent="Panel/PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_j45gd")
+theme_override_font_sizes/font_size = 52
+text = "Configuración"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="HSeparator" type="HSeparator" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Lb_gen_volume" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uhqo6")
+theme_override_font_sizes/font_size = 32
+text = "Volumen General: 0"
+
+[node name="S_general" type="HSlider" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Lb_ui_volume" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uhqo6")
+theme_override_font_sizes/font_size = 32
+text = "Volumen UI: 0"
+
+[node name="S_ui" type="HSlider" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Lb_g_volume" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uhqo6")
+theme_override_font_sizes/font_size = 32
+text = "Volumen Godette: 0"
+
+[node name="S_godette" type="HSlider" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="HSeparator4" type="HSeparator" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Bt_edit" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Perfil"
+
+[node name="Bt_close" type="Button" parent="Panel/PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.701961, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.12549, 0.12549, 0.12549, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tohvc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdtrx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5y7qq")
+icon = ExtResource("2_2gp8y")
+expand_icon = true
+
+[node name="Profile" type="PanelContainer" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.5
+offset_top = -284.5
+offset_right = 284.5
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lb_title" type="Label" parent="Panel/Profile"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_j45gd")
+theme_override_font_sizes/font_size = 52
+text = "Configuración"
+
+[node name="Message" type="Label" parent="Panel/Profile"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Profile"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Profile/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 70
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Lb_email" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Correo:"
+
+[node name="input_email" type="LineEdit" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+editable = false
+
+[node name="Lb_password" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Contraseña:"
+
+[node name="input_password" type="LineEdit" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+secret = true
+
+[node name="Lb_password2" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="check_password" type="CheckButton" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0.619608, 1, 1)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("SystemFont_h4u1r")
+theme_override_font_sizes/font_size = 20
+text = "Mostrar contraseña"
+
+[node name="Lb_name" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Nombre:"
+
+[node name="input_name" type="LineEdit" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Lb_lastname" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Apellidos:"
+
+[node name="input_lastname" type="LineEdit" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Lb_n_control" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Numero control:"
+
+[node name="input_n_control" type="LineEdit" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Label" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Edad:"
+
+[node name="Spin_age" type="SpinBox" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_qahas")
+min_value = 15.0
+max_value = 30.0
+value = 15.0
+
+[node name="Label2" type="Label" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sexo:"
+
+[node name="Check_gender" type="CheckButton" parent="Panel/Profile/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.645825, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.361893, 0.73525, 1)
+theme_override_colors/font_hover_color = Color(0, 0.647059, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.360784, 0.733333, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_u3tr6")
+theme_override_font_sizes/font_size = 20
+text = "Masculino"
+
+[node name="Bt_update" type="Button" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Actualizar"
+
+[node name="Bt_logout" type="Button" parent="Panel/Profile/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"bt_delete"
+text = "Cerrar Sesión"
+
+[node name="Bt_close" type="Button" parent="Panel/Profile"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.701961, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.12549, 0.12549, 0.12549, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tohvc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdtrx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5y7qq")
+icon = ExtResource("2_2gp8y")
+expand_icon = true
+
+[node name="sd_start" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_24cmq")
+bus = &"UI"
+
+[node name="sd_close" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_l1yar")
+bus = &"UI"
+
+[node name="sd_ding" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_jbjgk")
+bus = &"UI"
+
+[connection signal="pressed" from="Panel/PanelContainer/MarginContainer/VBoxContainer/Bt_edit" to="." method="_on_bt_edit_pressed"]
+[connection signal="pressed" from="Panel/PanelContainer/Bt_close" to="." method="_on_bt_close_pressed"]
+[connection signal="toggled" from="Panel/Profile/MarginContainer/GridContainer/check_password" to="." method="_on_check_password_toggled"]
+[connection signal="toggled" from="Panel/Profile/MarginContainer/GridContainer/Check_gender" to="." method="_on_check_gender_toggled"]
+[connection signal="pressed" from="Panel/Profile/MarginContainer/GridContainer/Bt_update" to="." method="_on_bt_update_pressed"]
+[connection signal="pressed" from="Panel/Profile/MarginContainer/GridContainer/Bt_logout" to="." method="_on_bt_logout_pressed"]
+[connection signal="pressed" from="Panel/Profile/Bt_close" to="." method="_on_bt_close_pressed"]

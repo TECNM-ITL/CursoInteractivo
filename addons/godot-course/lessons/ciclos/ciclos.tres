@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Dialogues" load_steps=14 format=3 uid="uid://ssf7ngepqek1"]
+
+[ext_resource type="AudioStream" uid="uid://1jva3qhvh7im" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo1.mp3" id="1_2lkvd"]
+[ext_resource type="Script" path="res://addons/godot-course/lessons/dialogues.gd" id="1_bwypx"]
+[ext_resource type="AudioStream" uid="uid://cyknhxa0u5bf" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo2.mp3" id="2_1ik3k"]
+[ext_resource type="AudioStream" uid="uid://iv4wiq1uqqig" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo3.mp3" id="3_phiwq"]
+[ext_resource type="AudioStream" uid="uid://baxdfnisebdvx" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo4.mp3" id="4_rftqp"]
+[ext_resource type="AudioStream" uid="uid://bq2nd7k4b80ef" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo5.mp3" id="5_yiub3"]
+[ext_resource type="AudioStream" uid="uid://bxuvu2sokvyys" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo6.mp3" id="6_nhi2q"]
+[ext_resource type="AudioStream" uid="uid://crfvpgp5i47i8" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo7.mp3" id="7_cvs5q"]
+[ext_resource type="AudioStream" uid="uid://ckgwelcnkwiu3" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo8.mp3" id="8_hbwfj"]
+[ext_resource type="AudioStream" uid="uid://bhkb1o3n2mk0n" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo9.mp3" id="9_ddyhp"]
+[ext_resource type="AudioStream" uid="uid://dli8yu02vvpah" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo10.mp3" id="10_s1h2f"]
+[ext_resource type="AudioStream" uid="uid://bqcvfc7fhlue7" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo11.mp3" id="11_mppaj"]
+[ext_resource type="AudioStream" uid="uid://cc3vgesmyrwq7" path="res://addons/godot-course/lessons/ciclos/dialogues/dialogo12.mp3" id="12_37iwr"]
+
+[resource]
+script = ExtResource("1_bwypx")
+dialogue_audios = Array[AudioStreamMP3]([ExtResource("1_2lkvd"), ExtResource("2_1ik3k"), ExtResource("3_phiwq"), ExtResource("4_rftqp"), ExtResource("5_yiub3"), ExtResource("6_nhi2q"), ExtResource("7_cvs5q"), ExtResource("8_hbwfj"), ExtResource("9_ddyhp"), ExtResource("10_s1h2f"), ExtResource("11_mppaj"), ExtResource("12_37iwr")])

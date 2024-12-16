@@ -1,0 +1,4 @@
+% Permite obtener el resto de una división entre dos números.
+if Evalúa una condición.
+elif Este bloque se evalúa solo si la primera condición del if fue falsa.
+else Este bloque se ejecuta solo si todas las condiciones anteriores fueron falsas.

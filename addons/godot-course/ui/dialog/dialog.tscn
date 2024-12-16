@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://04m3ku5hfoly"]
+
+[ext_resource type="Script" path="res://addons/godot-course/ui/dialog/dialog.gd" id="1_mur72"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nofe"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.815686, 0.941176, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_auu4r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1beq"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.192157, 0.439216, 0.854902, 1)
+border_width_bottom = 3
+border_color = Color(0.0156863, 0.215686, 0.54902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5l2p"]
+content_margin_left = 8.0
+content_margin_top = 14.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.192157, 0.439216, 0.854902, 1)
+border_width_top = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_1wgcg"]
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_3nofe")
+Button/colors/font_hover_color = Color(1, 0.705882, 0, 1)
+Button/font_sizes/font_size = 24
+Button/styles/focus = SubResource("StyleBoxEmpty_auu4r")
+Button/styles/hover = SubResource("StyleBoxFlat_a1beq")
+Button/styles/normal = SubResource("StyleBoxFlat_a1beq")
+Button/styles/pressed = SubResource("StyleBoxFlat_s5l2p")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 28
+Window/font_sizes/title_font_size = 24
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1wgcg")
+script = ExtResource("1_mur72")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+initial_position = 2
+size = Vector2i(550, 102)
+visible = true
+dialog_text = "asdadasdada"
+dialog_hide_on_ok = false
+dialog_close_on_escape = false
+dialog_autowrap = true
+
+[connection signal="canceled" from="AcceptDialog" to="." method="_on_accept_dialog_canceled"]
+[connection signal="confirmed" from="AcceptDialog" to="." method="_on_accept_dialog_confirmed"]

@@ -1,0 +1,288 @@
+[gd_scene load_steps=16 format=3 uid="uid://bg2n3gmwcepgo"]
+
+[ext_resource type="Script" path="res://addons/godot-course/global/item.gd" id="1_fqpec"]
+[ext_resource type="Texture2D" uid="uid://dp5ew6phrttcg" path="res://addons/godot-course/ui/icons/lock.svg" id="2_hy0xj"]
+[ext_resource type="FontFile" uid="uid://b0egmv7mkouwp" path="res://addons/godot-course/bubble/assets/fonts/poppins_bold.ttf" id="3_132s2"]
+[ext_resource type="Shader" path="res://addons/godot-course/global/shock.gdshader" id="4_gjent"]
+[ext_resource type="Texture2D" uid="uid://b8ah3bld8d0h6" path="res://addons/godot-course/ui/icons/exclamation.png" id="4_kwbxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mjjo"]
+bg_color = Color(0.854902, 0.964706, 1, 0.478431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kaa4f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgpwv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pfn0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.984314, 1, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tax3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaspd"]
+draw_center = false
+border_width_left = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0hmv"]
+shader = ExtResource("4_gjent")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/shock_color = Color(1, 0.873395, 0, 1)
+shader_parameter/amplitude = 30.0
+shader_parameter/frequecy = 10.0
+shader_parameter/flip_direction = false
+
+[sub_resource type="Animation" id="Animation_vrxa1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/Icon:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(90, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/Lb_title:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/Lb_state:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/Lb_title:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_awm2w"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/Icon:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90, 1), Vector2(90, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/Lb_title:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/Lb_state:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/Lb_title:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8doni"]
+_data = {
+"RESET": SubResource("Animation_vrxa1"),
+"appear": SubResource("Animation_awm2w")
+}
+
+[node name="Bt_base" type="PanelContainer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 355.0
+offset_bottom = 51.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3mjjo")
+script = ExtResource("1_fqpec")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kaa4f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bgpwv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7pfn0")
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tax3o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(90, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_hy0xj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lb_title" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_132s2")
+theme_override_font_sizes/font_size = 32
+text = "Desconocido"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxFlat_oaspd")
+
+[node name="Lb_state" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_132s2")
+theme_override_font_sizes/font_size = 22
+text = "⬤"
+horizontal_alignment = 1
+
+[node name="Exclamation" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_m0hmv")
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_kwbxs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_8doni")
+}
+autoplay = "RESET"
+
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]

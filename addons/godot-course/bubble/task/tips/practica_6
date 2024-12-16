@@ -1,0 +1,4 @@
+for Se usa cuando sabemos cuántas veces queremos que se repita una acción.
+while Se usa cuando no sabemos exactamente cuántas veces se debe repetir la acción, pero sabemos una condición que debe cumplirse.
+in Es para verificar si un elemento pertenece a una lista y para recorrer secuencias en bucles.
+range() Devuelve una lista con el rango dado.

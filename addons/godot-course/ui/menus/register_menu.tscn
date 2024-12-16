@@ -1,0 +1,172 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0y6k8ierbkkw"]
+
+[ext_resource type="Script" path="res://addons/godot-course/ui/menus/register_menu.gd" id="1_02ubi"]
+[ext_resource type="Theme" uid="uid://dlwl2v5s14s14" path="res://addons/godot-course/ui/main_theme.tres" id="1_xbh1h"]
+[ext_resource type="PackedScene" uid="uid://b24cwfhlecpi1" path="res://addons/godot-course/bubble/godette/godette.tscn" id="2_n1htk"]
+[ext_resource type="FontFile" uid="uid://dg3dawn3jkrrn" path="res://addons/godot-course/ui/fonts/Accuratist.otf" id="2_rrrp1"]
+[ext_resource type="AudioStream" uid="uid://bip7no0q26c03" path="res://addons/godot-course/ui/sounds/click.wav" id="6_v1li8"]
+
+[sub_resource type="SystemFont" id="SystemFont_0cyss"]
+
+[node name="register_menu" type="CanvasLayer"]
+script = ExtResource("1_02ubi")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 8
+theme = ExtResource("1_xbh1h")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.5
+offset_top = -125.0
+offset_right = 310.5
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Godette" parent="Panel/PanelContainer" instance=ExtResource("2_n1htk")]
+unique_name_in_owner = true
+position = Vector2(328.5, -33.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Lb_message" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "Hola, mi nombre es Godette ¿Cuál es el tuyo?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Input_name" type="LineEdit" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Nombre"
+alignment = 1
+caret_blink = true
+
+[node name="Input_email" type="LineEdit" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Correo"
+alignment = 1
+caret_blink = true
+
+[node name="Input_password" type="LineEdit" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Contraseña"
+alignment = 1
+caret_blink = true
+secret = true
+
+[node name="check_password" type="CheckButton" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0, 0.619608, 1, 1)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "MOSTRAR CONTRASEÑA"
+
+[node name="Input_lastname" type="LineEdit" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Apellidos"
+alignment = 1
+caret_blink = true
+
+[node name="Input_n_control" type="LineEdit" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "N° Control"
+alignment = 1
+caret_blink = true
+
+[node name="Age" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/Age"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "Edad:"
+
+[node name="Spin_age" type="SpinBox" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/Age"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 15.0
+max_value = 30.0
+value = 15.0
+
+[node name="Gender" type="HBoxContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/Gender"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "Sexo:"
+
+[node name="Check_gender" type="CheckButton" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/Gender"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.645825, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.361893, 0.73525, 1)
+theme_override_colors/font_hover_color = Color(0, 0.647059, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.360784, 0.733333, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_0cyss")
+theme_override_font_sizes/font_size = 20
+text = "Masculino"
+
+[node name="Bt_ok" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "INGRESAR"
+
+[node name="Lb_title" type="Label" parent="Panel/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_rrrp1")
+theme_override_font_sizes/font_size = 55
+text = "Registarse"
+
+[node name="sd_click" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_v1li8")
+bus = &"UI"
+
+[connection signal="toggled" from="Panel/PanelContainer/MarginContainer/VBoxContainer/Gender/Check_gender" to="." method="_on_check_gender_toggled"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqw6v43nq50uv"]
+
+[ext_resource type="Script" path="res://addons/godot-course/bubble/task/help.gd" id="1_wgsv8"]
+[ext_resource type="Texture2D" uid="uid://dabhkqnv71g68" path="res://addons/godot-course/ui/icons/question.png" id="1_xi70c"]
+[ext_resource type="Texture2D" uid="uid://c3gc8f5r8jks1" path="res://addons/godot-course/ui/icons/icon_solution.png" id="2_abs1l"]
+[ext_resource type="Shader" path="res://addons/godot-course/bubble/task/rotation.gdshader" id="2_e1qbf"]
+[ext_resource type="Shader" path="res://addons/godot-course/bubble/task/blink.gdshader" id="4_pe72f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yjec"]
+shader = ExtResource("2_e1qbf")
+shader_parameter/color = Color(1, 0, 0.435651, 1)
+shader_parameter/max_rotation_degrees = 45.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnbia"]
+shader = ExtResource("4_pe72f")
+shader_parameter/color = Color(1, 0.808609, 0, 1)
+shader_parameter/speed = 5.0
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+script = ExtResource("1_wgsv8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Lb_help" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ayuda"
+
+[node name="Bt_help" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_7yjec")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_xi70c")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Lb_solution" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Solución"
+
+[node name="Bt_solution" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_mnbia")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_abs1l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Bt_help" to="." method="_on_bt_help_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Bt_solution" to="." method="_on_bt_solution_pressed"]

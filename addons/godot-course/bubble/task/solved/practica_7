@@ -1,0 +1,10 @@
+var lista = [1, 2, 3, 4, 5]
+
+func suma():
+	var suma = 0
+	for i in lista:
+		suma += i
+	return suma
+
+func _ready():
+	print(suma())

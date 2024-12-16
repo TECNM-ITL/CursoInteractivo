@@ -1,0 +1,3 @@
+- Sí n < 0 retornara nulo.
+- Sí n <= 1 retornara 1.
+Recuerda que puedes hacer que una función se llame así misma.

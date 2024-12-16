@@ -1,0 +1,10 @@
+func _ready():
+	var count = 0
+	
+	for i in range(1, 11):
+		count += 1
+		print(count)
+	
+	while count != 1:
+		count -= 1
+		print(count)

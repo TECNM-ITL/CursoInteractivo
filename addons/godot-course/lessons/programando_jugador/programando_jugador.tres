@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Dialogues" load_steps=23 format=3 uid="uid://dhkiva4dalci1"]
+
+[ext_resource type="AudioStream" uid="uid://cbb8r2e7ojvh4" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo1.mp3" id="1_r7plu"]
+[ext_resource type="Script" path="res://addons/godot-course/lessons/dialogues.gd" id="1_x8feu"]
+[ext_resource type="AudioStream" uid="uid://cv0amcxlsn04g" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo2.mp3" id="2_ayaku"]
+[ext_resource type="AudioStream" uid="uid://d4jkuk55bl0eo" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo3.mp3" id="3_eev4s"]
+[ext_resource type="AudioStream" uid="uid://dbypl1hdgpfip" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo4.mp3" id="4_vvk5i"]
+[ext_resource type="AudioStream" uid="uid://bj4w2phih4xma" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo5.mp3" id="5_j7yp6"]
+[ext_resource type="AudioStream" uid="uid://dhjcq56fke4rc" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo6.mp3" id="6_h888u"]
+[ext_resource type="AudioStream" uid="uid://bakn5aqe80xgu" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo7.mp3" id="7_sj84j"]
+[ext_resource type="AudioStream" uid="uid://d0kpmcdhnpt7t" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo8.mp3" id="8_1n7ey"]
+[ext_resource type="AudioStream" uid="uid://djatkjqfyn0ex" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo9.mp3" id="9_r6tbk"]
+[ext_resource type="AudioStream" uid="uid://b11oiuhiteax8" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo10.mp3" id="10_ps86y"]
+[ext_resource type="AudioStream" uid="uid://542s8yjbs0px" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo11.mp3" id="11_1s4qf"]
+[ext_resource type="AudioStream" uid="uid://bxn03agsdcnin" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo12.mp3" id="12_npmei"]
+[ext_resource type="AudioStream" uid="uid://dxl5cmlsvvoqv" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo13.mp3" id="13_6djek"]
+[ext_resource type="AudioStream" uid="uid://k13kohs5pl7r" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo14.mp3" id="14_mw7w6"]
+[ext_resource type="AudioStream" uid="uid://hakrtgwg7cka" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo15.mp3" id="15_2dk1i"]
+[ext_resource type="AudioStream" uid="uid://2soyi81tsvmb" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo16.mp3" id="16_lttf4"]
+[ext_resource type="AudioStream" uid="uid://bb1imx63svc30" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo17.mp3" id="17_u2eyl"]
+[ext_resource type="AudioStream" uid="uid://c0qapqq6xj1yx" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo18.mp3" id="18_o5syu"]
+[ext_resource type="AudioStream" uid="uid://ch5wkc2xbb2l2" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo19.mp3" id="19_v57vu"]
+[ext_resource type="AudioStream" uid="uid://cu62y0dhekdfb" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo20.mp3" id="20_o5bnx"]
+[ext_resource type="AudioStream" uid="uid://5umk7mn1ahp0" path="res://addons/godot-course/lessons/programando_jugador/dialogues/dialogo21.mp3" id="21_grxxd"]
+
+[resource]
+script = ExtResource("1_x8feu")
+dialogue_audios = Array[AudioStreamMP3]([ExtResource("1_r7plu"), ExtResource("2_ayaku"), ExtResource("3_eev4s"), ExtResource("4_vvk5i"), ExtResource("5_j7yp6"), ExtResource("6_h888u"), ExtResource("7_sj84j"), ExtResource("8_1n7ey"), ExtResource("9_r6tbk"), ExtResource("10_ps86y"), ExtResource("11_1s4qf"), ExtResource("12_npmei"), ExtResource("13_6djek"), ExtResource("14_mw7w6"), ExtResource("15_2dk1i"), ExtResource("16_lttf4"), ExtResource("17_u2eyl"), ExtResource("18_o5syu"), ExtResource("19_v57vu"), ExtResource("20_o5bnx"), ExtResource("21_grxxd")])

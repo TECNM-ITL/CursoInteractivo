@@ -1,0 +1,337 @@
+[gd_scene load_steps=23 format=3 uid="uid://6opfhr8povc2"]
+
+[ext_resource type="Script" path="res://addons/godot-course/ui/menus/welcome.gd" id="1_7kwci"]
+[ext_resource type="Theme" uid="uid://dlwl2v5s14s14" path="res://addons/godot-course/ui/main_theme.tres" id="2_ib82y"]
+[ext_resource type="FontFile" uid="uid://b70m3nchy8ba2" path="res://addons/godot-course/ui/fonts/District Four.otf" id="3_wafr4"]
+[ext_resource type="Texture2D" uid="uid://dy581mox0hel7" path="res://addons/godot-course/ui/banners/background.png" id="3_wga76"]
+[ext_resource type="FontFile" uid="uid://b0egmv7mkouwp" path="res://addons/godot-course/bubble/assets/fonts/poppins_bold.ttf" id="3_x14cr"]
+[ext_resource type="Texture2D" uid="uid://x3mhqjkjpda" path="res://addons/godot-course/ui/icons/icon_close.png" id="5_8fu7g"]
+[ext_resource type="Texture2D" uid="uid://pbs5nrsxxq75" path="res://addons/godot-course/ui/godot/Godot.png" id="5_tfbcu"]
+[ext_resource type="Script" path="res://addons/godot-course/ui/menus/logo.gd" id="5_w1mg8"]
+[ext_resource type="Texture2D" uid="uid://bhiwin0u5l8j5" path="res://addons/godot-course/ui/godot/GodotEyes.png" id="6_d0wuy"]
+[ext_resource type="AudioStream" uid="uid://baoc3hinmgj2n" path="res://addons/godot-course/ui/sounds/start.mp3" id="9_v1usd"]
+[ext_resource type="AudioStream" uid="uid://bn0so6fbchkfb" path="res://addons/godot-course/ui/sounds/close.wav" id="10_r6bn4"]
+
+[sub_resource type="Shader" id="Shader_ydr1v"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+uniform float scale;
+
+mat2 r(float a) {
+    float s = sin(a);
+    float c = cos(a);
+    return mat2(vec2(c,-s),vec2(s,c));
+}
+
+void fragment(){
+	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+    vec2 uv = ((FRAGCOORD.xy-.5*iResolution.xy)/iResolution.y*5.+10.)*r(TIME*.03);
+	uv *= vec2(scale);
+    float id = mod(floor(uv.x)+floor(uv.y),2.);
+    float f = smoothstep(-.6,.6,cos(fract(TIME*(id*2.-1.)+id*.5)*3.1415));
+    vec2 guv = (fract(uv)-.5)*(cos(fract(TIME+id*.5)*6.282)*.5+1.5)*r(f*1.5707);
+    COLOR = color*(length(max(abs(guv)-.25,0.)) < .1 ? 1. : .6);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74km3"]
+shader = SubResource("Shader_ydr1v")
+shader_parameter/color = Color(0, 0.443137, 1, 0.0588235)
+shader_parameter/scale = 3.0
+
+[sub_resource type="Shader" id="Shader_xbts4"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color = vec4(1.0);
+
+#define Q a *= 3.14159;\\
+          vec2 s=vec2(sin(a),cos(a));
+
+
+float A( vec2 p, float a) // By iq: https://www.shadertoy.com/view/wl23RK
+{
+	Q
+	p.x = abs(p.x);
+	return ((s.y*p.x>s.x*p.y) ? length(p-s*.7) : 
+									abs(length(p)-.7)) - .13;
+}
+
+mat2 D( float a ) // rotation matrix
+{
+	Q
+	return mat2( vec2(s.y,-s.x),vec2(s.x,s.y));
+}
+
+void fragment()
+{
+	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+	vec2 r = iResolution.xy, p = (UV - 0.5) * 2.0;
+	
+	float T = TIME*3., 
+	d = A( p*D(1.-.125*floor(T)),.4375 ), // distance to longest arc
+	i;
+    
+	for (float i = 0.; i < 1.; i+=.5)
+		d = min( A( p*D(mix( -.5,.625, fract(T/2.+i) ) -.125*T ), .0625), d ); // distance to shorter arcs (\"pellets\")
+
+	COLOR = vec4(smoothstep( .01,.0,d)) * color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cfbn"]
+shader = SubResource("Shader_xbts4")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_2rgof"]
+script/source = "@tool
+extends ColorRect
+
+@onready var lb_state := %lb_state
+
+func _ready() -> void:
+	lb_state.add_theme_font_size_override(\"font_size\", 24)
+	material.set_shader_parameter(\"color\", Color.WHITE)
+
+func load_state(response_code : int) -> void:
+	lb_state.add_theme_font_size_override(\"font_size\", 32)
+	if response_code == 200:
+		Manager.connected = true
+		lb_state.text = \"Modo\\nOnline\"
+		material.set_shader_parameter(\"color\", Color.GREEN)
+		lb_state.add_theme_color_override(\"font_color\", Color.GREEN)
+	else:
+		Manager.connected = false
+		lb_state.text = \"Modo\\nOffline\"
+		material.set_shader_parameter(\"color\", Color.CADET_BLUE)
+		lb_state.add_theme_color_override(\"font_color\", Color.CADET_BLUE)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp7p1"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Shader" id="Shader_h2273"]
+code = "shader_type canvas_item;
+
+uniform sampler2D text : repeat_enable;
+
+void fragment() {
+	vec2 uv = UV - TIME * 0.1;
+	vec4 background = texture(text, uv);
+	COLOR = background;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7pvn"]
+shader = SubResource("Shader_h2273")
+shader_parameter/text = ExtResource("3_wga76")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ulmt"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.701961, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcd5x"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.254902, 0.254902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee0ha"]
+bg_color = Color(1, 0.254902, 0.254902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Welcome" type="CanvasLayer"]
+script = ExtResource("1_7kwci")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_74km3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 8
+theme = ExtResource("2_ib82y")
+
+[node name="load" type="ColorRect" parent="Panel"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_6cfbn")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_2rgof")
+
+[node name="lb_state" type="Label" parent="Panel/load"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -11.5
+offset_right = 55.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_x14cr")
+theme_override_font_sizes/font_size = 24
+text = "Conectando...."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(630, 531)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -265.5
+offset_right = 315.0
+offset_bottom = 265.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mp7p1")
+
+[node name="Background" type="ColorRect" parent="Panel/PanelContainer"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_l7pvn")
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 38
+theme_override_constants/margin_right = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Lb_title" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_wafr4")
+theme_override_font_sizes/font_size = 52
+text = "Bienvenido a Godot Engine"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]¡En este curso emocionante, explorarás el mundo de la programación mediante la creación de un videojuego! Antes de comenzar, vamos a hacer un recorrido por los cuatro pilares del motor: [b]Editor Godot[/b], [b]Nodos[/b], [b]Scripts[/b] y las [b]Señales[/b]. 
+[b]¡Prepárate para sumergirte en un mundo lleno de diversión y aprendizaje![/b][/center]
+"
+fit_content = true
+
+[node name="Bt_start" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "EMPEZAR A APRENDER"
+
+[node name="Logo" type="Control" parent="Panel/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("5_w1mg8")
+
+[node name="Icon" type="Sprite2D" parent="Panel/PanelContainer/Logo"]
+unique_name_in_owner = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_tfbcu")
+
+[node name="Eyes" type="Sprite2D" parent="Panel/PanelContainer/Logo"]
+unique_name_in_owner = true
+position = Vector2(-3, 3)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_d0wuy")
+
+[node name="Bt_close" type="Button" parent="Panel/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.701961, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.12549, 0.12549, 0.12549, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.254902, 0.254902, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ulmt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xcd5x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ee0ha")
+icon = ExtResource("5_8fu7g")
+expand_icon = true
+
+[node name="sd_start" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_v1usd")
+bus = &"UI"
+
+[node name="sd_close" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_r6bn4")
+bus = &"UI"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+timeout = 5.0
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

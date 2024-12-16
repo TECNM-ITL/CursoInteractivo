@@ -1,0 +1,9 @@
+func _ready():
+	var nombre = "Juan"
+	var apellido = "Perez"
+	var edad = 23
+	var carrera = "Ing Sistemas Computacionales"
+	print(nombre)
+	print(apellido)
+	print(edad)
+	print(carrera)

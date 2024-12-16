@@ -1,0 +1,10 @@
+func factorial(n):
+	if n < 0:
+		return null
+	elif n <= 1:
+		return 1
+	else:
+		return n * factorial(n - 1)
+
+func _ready():
+	print(factorial(10))

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14clshm1xsiv"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/variables_ejemplo.gd" id="1_x0l04"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_eswjv"]
+
+[node name="Variables" type="Node"]
+script = ExtResource("1_x0l04")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_eswjv")

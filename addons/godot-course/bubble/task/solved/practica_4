@@ -1,0 +1,15 @@
+# Asignale un valor numerico a las variables
+var numero1 = 50
+var numero2 = 20
+
+func _ready():
+	var suma = numero1 + numero2 # Realiza una suma de ambas varialbes
+	var resta = numero1 - numero2 # Realiza una resta de ambas varialbes
+	var multiplicacion = numero1 * numero2 #Realiza una multiplicación de ambas varialbes
+	var division = numero1 / numero2 # Realiza una división de ambas varialbes
+	
+	# Imprime el resultado de cada una de las operacines
+	print(suma)
+	print(resta)
+	print(multiplicacion)
+	print(division)

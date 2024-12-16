@@ -1,0 +1,8 @@
+#Asigna un valor numerico
+var numero = 4
+
+func _ready():
+	if numero % 2 == 0:
+		print("Es par")
+	else:
+		print("Es impar")

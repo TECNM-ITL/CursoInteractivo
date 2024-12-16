@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5d718ylw2b88"]
+
+[ext_resource type="Script" path="res://GDScript/practicas/practica_9.gd" id="1_2x88k"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_8xs54"]
+
+[node name="Evaluación2" type="Node"]
+script = ExtResource("1_2x88k")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_8xs54")

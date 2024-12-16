@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds0abo5doum86"]
+
+[ext_resource type="Script" path="res://GDScript/ejemplos/condicionales_ejemplos.gd" id="1_647rp"]
+[ext_resource type="Script" path="res://GDScript/minimize.gd" id="2_ldil2"]
+
+[node name="Condicionales" type="Node"]
+script = ExtResource("1_647rp")
+
+[node name="*" type="Node" parent="."]
+script = ExtResource("2_ldil2")

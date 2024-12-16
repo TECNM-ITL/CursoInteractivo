@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyw66auo02h5c"]
+
+[ext_resource type="Script" path="res://addons/godot-course/bubble/bubble.gd" id="1_agiy2"]
+[ext_resource type="Theme" uid="uid://cx2cxgbadh7fg" path="res://addons/godot-course/bubble/assets/bubble_theme.tres" id="2_rfjhp"]
+[ext_resource type="PackedScene" uid="uid://b24cwfhlecpi1" path="res://addons/godot-course/bubble/godette/godette.tscn" id="3_3scur"]
+
+[node name="Bubble" type="CanvasLayer"]
+script = ExtResource("1_agiy2")
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 174)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -87.0
+offset_right = 256.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_rfjhp")
+
+[node name="Godette" parent="Panel" instance=ExtResource("3_3scur")]
+unique_name_in_owner = true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b24cwfhlecpi1"]
+
+[ext_resource type="Shader" path="res://addons/godot-course/bubble/godette/outline.gdshader" id="1_e4l34"]
+[ext_resource type="Script" path="res://addons/godot-course/bubble/godette/godette.gd" id="1_nv04p"]
+[ext_resource type="Texture2D" uid="uid://dab2r5spcrykd" path="res://addons/godot-course/bubble/godette/godette_explaining.png" id="3_65kj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xd11y"]
+shader = ExtResource("1_e4l34")
+shader_parameter/color = Color(0.521569, 0.85098, 1, 1)
+shader_parameter/width = 20.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[node name="Godette" type="Node2D"]
+script = ExtResource("1_nv04p")
+
+[node name="Godette" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_xd11y")
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("3_65kj2")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Godette"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://da21jw8o5wja8"]
+
+[ext_resource type="Script" path="res://addons/godot-course/overlays/highlight/highlight.gd" id="1_rieq3"]
+[ext_resource type="PackedScene" uid="uid://d3cgblhg1sbn" path="res://addons/godot-course/overlays/flash_area/flash_area.tscn" id="2_d50xi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8i51"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.396078, 0.733333, 0.960784, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="Highlight" type="Panel" groups=["highlight"]]
+z_index = 999
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l8i51")
+script = ExtResource("1_rieq3")
+
+[node name="FlashArea" parent="." instance=ExtResource("2_d50xi")]
+unique_name_in_owner = true
+visible = false
+top_level = false
+z_index = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2

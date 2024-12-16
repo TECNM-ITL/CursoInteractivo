@@ -1,0 +1,4 @@
+- La función len() devuelve el tamaño de la variable que se le pasa. El tamaño puede ser la cantidad de caracteres de una cadena.
+- La función split() divide la cadena utilizando un delimitador y devuelve una lista de las subcadenas.
+"Uno, Dos, Tres".split(", ") -> Uno Dos Tres
+

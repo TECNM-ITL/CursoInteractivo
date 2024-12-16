@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Dialogues" load_steps=14 format=3 uid="uid://bs8ysuavh7ntb"]
+
+[ext_resource type="AudioStream" uid="uid://cr2em2c0v0b7u" path="res://addons/godot-course/lessons/variables/dialogues/dialogo1.mp3" id="1_onie5"]
+[ext_resource type="Script" path="res://addons/godot-course/lessons/dialogues.gd" id="1_qst3o"]
+[ext_resource type="AudioStream" uid="uid://b40n1pe2pgkyu" path="res://addons/godot-course/lessons/variables/dialogues/dialogo2.mp3" id="2_eefcy"]
+[ext_resource type="AudioStream" uid="uid://cjgbih56jyjt7" path="res://addons/godot-course/lessons/variables/dialogues/dialogo3.mp3" id="3_iqndp"]
+[ext_resource type="AudioStream" uid="uid://cooo87duvsv6i" path="res://addons/godot-course/lessons/variables/dialogues/dialogo4.mp3" id="4_cljtq"]
+[ext_resource type="AudioStream" uid="uid://8cm0xo3yoh2g" path="res://addons/godot-course/lessons/variables/dialogues/dialogo5.mp3" id="5_v5cqn"]
+[ext_resource type="AudioStream" uid="uid://c5gttspk2mtb8" path="res://addons/godot-course/lessons/variables/dialogues/dialogo6.mp3" id="6_4vrv7"]
+[ext_resource type="AudioStream" uid="uid://bt8lfm7f26gyy" path="res://addons/godot-course/lessons/variables/dialogues/dialogo7.mp3" id="7_dklar"]
+[ext_resource type="AudioStream" uid="uid://crohsc4nmepdb" path="res://addons/godot-course/lessons/variables/dialogues/dialogo8.mp3" id="8_bw1o4"]
+[ext_resource type="AudioStream" uid="uid://bjhmdwipdjvxg" path="res://addons/godot-course/lessons/variables/dialogues/dialogo9.mp3" id="9_cllu0"]
+[ext_resource type="AudioStream" uid="uid://yrejbvam5r2n" path="res://addons/godot-course/lessons/variables/dialogues/dialogo10.mp3" id="10_jwn5q"]
+[ext_resource type="AudioStream" uid="uid://kdtb6qf1qcsy" path="res://addons/godot-course/lessons/variables/dialogues/dialogo11.mp3" id="11_8jwvs"]
+[ext_resource type="AudioStream" uid="uid://i01sv2ux117a" path="res://addons/godot-course/lessons/variables/dialogues/dialogo12.mp3" id="12_yliul"]
+
+[resource]
+script = ExtResource("1_qst3o")
+dialogue_audios = Array[AudioStreamMP3]([ExtResource("1_onie5"), ExtResource("2_eefcy"), ExtResource("3_iqndp"), ExtResource("4_cljtq"), ExtResource("5_v5cqn"), ExtResource("6_4vrv7"), ExtResource("7_dklar"), ExtResource("8_bw1o4"), ExtResource("9_cllu0"), ExtResource("10_jwn5q"), ExtResource("11_8jwvs"), ExtResource("12_yliul")])
