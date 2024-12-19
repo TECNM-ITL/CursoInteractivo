@@ -25,7 +25,7 @@ El desarrollo continuo de este proyecto dependerá en gran medida de las contrib
 Igualmente agradecemos mucho que se reporten errores y se propongan nuevas características.
 #
 ## Instalación
-El projecto ya cuenta con un instalador que hace todo el proceso automatico pero si quieres hacer una instalación manual debes hacer los siguientes pasos:
+El proyecto ya cuenta con un instalador que hace todo el proceso automático, pero si quieres hacer una instalación manual debes hacer los siguientes pasos:
 * Descarga el proyecto en este repositorio.
 ![download_repository](https://github.com/user-attachments/assets/4bcedbd9-f514-4966-b0af-2ad636127d86)
 * Descargar el ejecutable de la base de datos database.exe
@@ -35,7 +35,7 @@ El projecto ya cuenta con un instalador que hace todo el proceso automatico pero
 ![app_userdata](https://github.com/user-attachments/assets/5bafe68c-23be-4372-bece-8f8ef64da8f4)
 * Haz doble click sobre el proyecto para poder ingresar en él.
 ![ProjectManager](https://github.com/user-attachments/assets/105f5d4d-a45c-49ad-8042-21a4803045b7)
-* Por último, Godot importara todos los recursos en el proyecto porque este no funcionara bien, tendrás que salir y volver a entrar.
+* Por último, Godot importara todos los recursos de el proyecto por lo que este no funcionara bien, tendrás que salir y volver a entrar.
 #
 ## Documentación
 Manual de usuario: https://drive.google.com/file/d/15dJ6UBy4ckBs5HDUoOfLeW3K5Fs9bV9J/view?usp=drive_link
